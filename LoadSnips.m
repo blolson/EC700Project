@@ -16,15 +16,23 @@ if exist('kSNIPS') == 0
     toc
 end
 
+if exist('kRAW_TIME') == 0
+    tic
+    fprintf('Raw: Working on kRAW_TIME\n');
+    raw_temp = getTDTdata(tdt,'Raw1','channel',1);
+    kRAW_TIME = raw_temp.times;
+    toc
+end
+
 % if exist('kRAW') == 0
 %     tic
 %     kRAW = cell(32,2);
-%     for i = 1:24
+%     for i = 1:32
 %         fprintf('Raw: Working on %d\n',i);
-%         raw_temp = getdata(tdt,'Raw1','channel',i);
+%         raw_temp = getTDTdata(tdt,'Raw1','channel',i);
 %         kRAW{i,1} = raw_temp.vals;
 %         kRAW{i,2} = raw_temp.times;
-%     end
+%     end  
 %     toc
 % end
 
