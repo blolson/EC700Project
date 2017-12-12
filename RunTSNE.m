@@ -2,8 +2,8 @@ function raw_spike_train = RunTSNE(kRAW_TIME, kSNIPS)
 %   Blade Olson, BU 12/8/17
    
     kELECTRODE_NUM = 4;
-    kTETRODE_CLUSTER = [10, 4, 7, 3, 5, 8];
-    kLINE_COLORS = ['b.', 'g.', 'r.', 'k.', 'm.', 'c.', 'y.', 'b.', 'g.', 'r.'];
+    kTETRODE_CLUSTER = [3, 3, 3, 2, 2, 3];
+    kLINE_COLORS = ['b', 'g', 'r', 'k', 'm', 'c', 'y', 'b', 'g', 'r'];
     kCLUSTER_TRAIN_EXAMPLES = 500;
     snip_list = cell(4,1);
     
@@ -57,6 +57,8 @@ function raw_spike_train = RunTSNE(kRAW_TIME, kSNIPS)
         hold on
         for v = 1:kTETRODE_CLUSTER(index)
             temp_cluster = Y2(idx == v,:);
+            %Blade: this is the last one I uncommented - makes nice-looking
+            %graphs
             scatter3(temp_cluster(:,1),temp_cluster(:,2),temp_cluster(:,3),'filled',kLINE_COLORS(v))
             
             %tag the original set of snips using these clusters
